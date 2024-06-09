@@ -32,9 +32,17 @@ def decodeMessage(message_file):
 
     # open file and assign data to variable, message_file is the file path
     data = open(message_file)
-    data_list = [ d.strip() for d in data.readlines()]
+    data_list = [d.strip().split(' ') for d in data.readlines()]
+    data_dict = {}
+    for tuple in data_list:
+        if tuple[0] not in data_dict:
+            data_dict[tuple[0]] = tuple[1]
+        else:
+            data_dict[tuple[0]].append(tuple[1])
+    
 
-    print(data_list)
+
+
 
 
 print(decodeMessage('./coding_qual_input.txt'))
