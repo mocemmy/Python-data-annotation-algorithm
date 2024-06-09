@@ -22,3 +22,19 @@
 # 3: love
 # 6: computers
 # and your function would return the string "i love computers".
+
+def decodeMessage(message_file):
+    """
+    Function to decode a hidden message and return the message as a string
+    """
+    # The file will have a number followed by a word and the number will correspond to the key in a dictionary and the message will be the value to allow for constant time reading of the answer;
+    # The format for the pyramid is to "place" the numbers in a pyramid structure starting from the smallest number and adding 1 to each row of the pyramid until it is complete, then the last number of each row will be necessary keys
+
+    # open file and assign data to variable, message_file is the file path
+    data = open(message_file)
+    data_list = [ d.strip() for d in data.readlines()]
+
+    print(data_list)
+
+
+print(decodeMessage('./coding_qual_input.txt'))
