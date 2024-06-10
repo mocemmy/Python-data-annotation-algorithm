@@ -27,22 +27,39 @@ def decodeMessage(message_file):
     """
     Function to decode a hidden message and return the message as a string
     """
-    # The file will have a number followed by a word and the number will correspond to the key in a dictionary and the message will be the value to allow for constant time reading of the answer;
-    # The format for the pyramid is to "place" the numbers in a pyramid structure starting from the smallest number and adding 1 to each row of the pyramid until it is complete, then the last number of each row will be necessary keys
-
-    # open file and assign data to variable, message_file is the file path
     data = open(message_file)
     data_list = [d.strip().split(' ') for d in data.readlines()]
     data_dict = {}
     for tuple in data_list:
         if tuple[0] not in data_dict:
-            data_dict[tuple[0]] = tuple[1]
+            data_dict[int(tuple[0])] = tuple[1]
         else:
-            data_dict[tuple[0]].append(tuple[1])
+            data_dict[int(tuple[0])].append(tuple[1])
+
+    end_of_row_num = 1
+    num_in_row = 1
+    string_result = ''
+    for num, word in sorted(data_dict.items()):
+        if num == end_of_row_num:
+            string_result = string_result + ' ' + word
+            print(num_in_row, end_of_row_num)
+            num_in_row += 1
+            end_of_row_num = end_of_row_num + num_in_row
+    return string_result
+        
+
+
+
+print(decodeMessage('./test_message.txt'))
+# print(decodeMessage('./coding_qual_input.txt'))
+
+def iliadColor(text_file, words):
+    """
+    a function to find the given instances of the words in the text file
+    """
+
+    data = open(text_file)
+    data_list = [d.strip().split(' ') for d in data.readlines()]
     
 
-
-
-
-
-print(decodeMessage('./coding_qual_input.txt'))
+print(iliadColor('./agamemnon.txt', ['black', 'white', 'grey', 'blue', 'red', 'green']))
