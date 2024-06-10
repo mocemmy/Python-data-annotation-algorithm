@@ -11,6 +11,13 @@ df = pd.DataFrame(data)
 print(df)
 
 
-result = df.groupby("Team")["Score"].apply(lambda x: (x > 85).sum())
+# result = df.groupby("Team")["Score"].apply(lambda x: (x > 85).sum())
+# print(result)
 
-print(result)
+# df.fillna("Unknown", inplace=True)
+# df["Receipt ID"] = df["Receipt ID"].fillna("Unknown")
+# df.fillna({"Receipt ID": "Unknown"})
+# df = df.fillna("Receipt ID": "Unknown")
+
+# print(df)
+
